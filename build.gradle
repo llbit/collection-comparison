@@ -1,4 +1,10 @@
 apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'signing'
+
+project.version = '1.0.0'
+project.group = 'se.llbit'
+project.archivesBaseName = 'collcompare'
 
 sourceCompatibility = '1.6'
 targetCompatibility = '1.6'
@@ -8,5 +14,65 @@ repositories {
 }
 
 dependencies {
-	testCompile group: 'junit', name: 'junit', version: '4.+'
+	testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+task javadocJar(type: Jar) {
+	classifier = 'javadoc'
+	from javadoc
+}
+
+task sourcesJar(type: Jar) {
+	classifier = 'sources'
+	from sourceSets.main.allSource
+}
+
+artifacts {
+	archives javadocJar, sourcesJar
+}
+
+signing {
+	sign configurations.archives
+}
+
+uploadArchives {
+	repositories.mavenDeployer {
+		beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+		repository(url: 'https://oss.sonatype.org/service/local/staging/deploy/maven2') {
+			if (project.hasProperty('ossrhUsername')) {
+				authentication(userName: ossrhUsername, password: ossrhPassword)
+			}
+		}
+
+		snapshotRepository(url: 'https://oss.sonatype.org/content/repositories/snapshots') {
+			if (project.hasProperty('ossrhUsername')) {
+				authentication(userName: ossrhUsername, password: ossrhPassword)
+			}
+		}
+
+		pom.project {
+			name 'CollectionComparison'
+			packaging 'jar'
+			description 'A tiny library for comparing collections.'
+			url 'https://github.com/llbit/collection-comparison'
+			licenses {
+				license {
+					name 'Modified BSD License'
+					url 'http://opensource.org/licenses/BSD-3-Clause'
+					distribution 'repo'
+				}
+			}
+			developers {
+				developer {
+					name 'Jesper Öqvist'
+					email 'jesper@llbit.se'
+				}
+			}
+			scm {
+				connection 'scm:git:https://github.com/llbit/collection-comparison.git'
+				url 'https://github.com/llbit/collection-comparison'
+			}
+		}
+	}
 }
