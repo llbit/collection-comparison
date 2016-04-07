@@ -1,6 +1,10 @@
 Efficient Collection Equality Comparison
 ========================================
 
+[![Build Status](https://travis-ci.org/llbit/collection-comparison.svg?branch=master)](https://travis-ci.org/llbit/collection-comparison)
+[![Test Coverage](https://codecov.io/github/llbit/collection-comparison/coverage.svg?branch=master)](https://codecov.io/github/llbit/collection-comparison?branch=master)
+
+
 This is a tiny Java library with a single method for testing if two Java
 collections contain the same elements:
 
