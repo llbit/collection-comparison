@@ -73,5 +73,33 @@ that incorrect collection comparison algorithms fail to handle:
 * One collection has extra duplicates of some items, not present in the other collection.
 * One collection has the same elements as the other, but in a different order.
 
+##Using the library
+
+The algorithm described above is available as a tiny collection library which
+is [available on The Central Repository][3]!
+
+To build using the tiny collection comparison library, just declare an extra
+dependency in your build script. For example as in this Gradle build:
+
+    apply plugin: 'maven'
+    apply plugin: 'java'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        compile 'se.llbit:collcompare:1.0.0'
+    }
+
+
+You can then use the collection equality method in your code:
+
+    import static se.llbit.util.CollectionComparison.isEqualCollection;
+
+    ...
+    isEqualCollection(a, b);
+
+
+
 [1]: https://commons.apache.org/proper/commons-collections/apidocs/org/apache/commons/collections4/CollectionUtils.html#isEqualCollection(java.util.Collection,%20java.util.Collection)
 [2]: http://llbit.se/?p=2009
+[3]: http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22collcompare%22
