@@ -19,13 +19,13 @@ dependencies {
 }
 
 jacocoTestReport {
-	group = "Reporting"
 	reports {
-		xml.enabled true
-		csv.enabled false
-		html.destination "${buildDir}/reports/coverage"
+		xml.enabled = true
+		html.enabled = true
 	}
 }
+
+check.dependsOn jacocoTestReport
 
 task javadocJar(type: Jar) {
 	classifier = 'javadoc'
