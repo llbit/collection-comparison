@@ -79,7 +79,7 @@ public class CollectionComparisonTest {
    * Test two collections with no duplicates and elements in the same order.
    */
   @Test
-  public void testSimple() {
+  public void testSimpleEqual() {
     Collection<String> a = listOf("a", "b", "c");
     Collection<String> b = listOf("a", "b", "c");
     assertTrue(CollectionComparison.isEqualCollection(a, b));
@@ -202,6 +202,18 @@ public class CollectionComparisonTest {
   public void testEqualityComparison2() {
     Collection<AlwaysEqual> a = listOf(new AlwaysEqual(), new AlwaysEqual());
     Collection<AlwaysEqual> b = listOf(new AlwaysEqual());
+    assertFalse(CollectionComparison.isEqualCollection(a, b));
+    assertFalse(CollectionComparison.isEqualCollection(b, a));
+  }
+
+  /**
+   * Test two collections of the same size, but one has duplicates and the
+   * other has elements not present in the other.
+   */
+  @Test
+  public void testSameSizeInequal() {
+    Collection<Integer> a = listOf(1, 12, 12);
+    Collection<Integer> b = listOf(1, 12, 1729);
     assertFalse(CollectionComparison.isEqualCollection(a, b));
     assertFalse(CollectionComparison.isEqualCollection(b, a));
   }

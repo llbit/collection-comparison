@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'signing'
+apply plugin: 'jacoco'
 
 project.version = '1.0.0'
 project.group = 'se.llbit'
@@ -15,6 +16,15 @@ repositories {
 
 dependencies {
 	testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+jacocoTestReport {
+	group = "Reporting"
+	reports {
+		xml.enabled true
+		csv.enabled false
+		html.destination "${buildDir}/reports/coverage"
+	}
 }
 
 task javadocJar(type: Jar) {

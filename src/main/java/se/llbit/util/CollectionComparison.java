@@ -39,7 +39,7 @@ import java.util.Map;
  *
  * @author Jesper Öqvist
  */
-public class CollectionComparison {
+public abstract class CollectionComparison {
   /**
    * Utility method for checking if two collections have the same elements,
    * disregarding the element order but respecting duplicates, i.e. the elements
@@ -78,11 +78,6 @@ public class CollectionComparison {
         return false;
       }
       map.put(o, Integer.valueOf(count - 1));
-    }
-    for (Integer count: map.values()) {
-      if (count.intValue() != 0) {
-        return false;
-      }
     }
     return true;
   }
