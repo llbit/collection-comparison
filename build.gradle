@@ -32,6 +32,8 @@ artifacts {
 }
 
 signing {
+	// Skip signing when credentials are not available:
+	required { project.hasProperty('ossrhUsername') && project.hasProperty('ossrhPassword') }
 	sign configurations.archives
 }
 
