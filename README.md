@@ -1,5 +1,4 @@
-Efficient Collection Equality Comparison
-========================================
+# Efficient Collection Equality Comparison
 
 [![Build Status](https://travis-ci.org/llbit/collection-comparison.svg?branch=master)](https://travis-ci.org/llbit/collection-comparison)
 [![Test Coverage](https://codecov.io/github/llbit/collection-comparison/coverage.svg?branch=master)](https://codecov.io/github/llbit/collection-comparison?branch=master)
@@ -17,7 +16,7 @@ number of occurrences of each element in both collections.  The algorithm is
 efficient and well tested. A sketch of a correctness proof is available below.
 
 
-##Background
+## Background
 
 I have seen many implementations of collection comparison algorithms in various
 projects. Many of those implementations were incorrect in some way. Comparing
@@ -81,7 +80,7 @@ licensed under the Modified BSD License. The tests check some special cases
 that incorrect collection comparison algorithms fail to handle, and the tests
 cover all statements in the implementation.
 
-##Correctness Proof Sketch
+## Correctness Proof Sketch
 
 I have made a sketch of a proof for correctness here. I'm not used to writing
 proofs, so I hope it's not too poorly structured. If I made an error please
@@ -148,7 +147,7 @@ Consider each case in turn:
   and returns `true`.
 
 
-##Using the library
+## Using the library
 
 The library is [available from The Central Repository][3]!
 
@@ -173,7 +172,7 @@ You can then use the collection equality method in your code:
     isEqualCollection(a, b);
 
 
-##Version History
+## Version History
 
 * **1.0.0** Initial version.
 * **1.0.1** Improved algorithm.
