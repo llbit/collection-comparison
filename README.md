@@ -160,7 +160,7 @@ dependency in your build script. For example as in this Gradle build:
         mavenCentral()
     }
     dependencies {
-        compile 'se.llbit:collcompare:1.0.0'
+        compile 'se.llbit:collcompare:1.0.1'
     }
 
 
